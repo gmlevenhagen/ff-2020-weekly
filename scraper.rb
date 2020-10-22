@@ -22,16 +22,19 @@ ranking_variables.each do |ranking_variable|
    fant_html_parsed_to_elements = Nokogiri::HTML(fant_html)
    fantasy_impact = fant_html_parsed_to_elements.css("p")[3].text
  
-
+Cli.new(name, news, category, fantasy_impact)
 
 puts " --------------------------------------------"
 puts " "
-puts " Player Name: #{name}"
+puts "***  Player Name: #{name} ***"
 puts " "
+puts "***  #{category} ***"
+puts " "
+puts " -------------"
 puts " Updated News: "
 puts " -------------"
-puts " #{news}"
-puts " #{category}"
+puts "*  #{news}"
+puts " "
 puts " "
 puts "--------------------------------------------- "
 puts " "

@@ -7,4 +7,22 @@ class CLI
         @fantasy_impact = fantasy_impact
     end
 
+    def first_news
+        puts " --------------------------------------------"
+        puts " "
+        puts "***  Player Name: #{name} ***"
+        puts " "
+        puts "***  #{category} ***"
+        puts " "
+        puts " -------------"
+        puts " Updated News: "
+        puts " -------------"
+        puts "*  #{news}"
+        puts " "
+        puts " "
+        puts "--------------------------------------------- "
+        puts " "
+        puts " "
+    end
 end
+
