@@ -1,26 +1,51 @@
 require_relative "enviroment.rb"
 class Scraper
-    attr_accessor :url, :html, :html_parsed_to_elements
+    attr_accessor :url, :html, :html_parsed_to_elements, :ranking_variable
 
-url = "https://www.fantasypros.com/nfl/rankings/qb.php"
+url = "https://www.fantasypros.com/nfl/player-news.php"
 html = open(url)
-
 html_parsed_to_elements = Nokogiri::HTML(html)
-
-ranking_variable = html_parsed_to_elements.css("")
-
-ranking_url = ranking_variable.css("")
-
+ranking_variables = html_parsed_to_elements.css(".player-news-item")
 
 ranking_variables.each do |ranking_variable|
-    rank = ranking_variable.css("sticky-cell")[0].text
-    player = ranking_variable.css("player-cell")[0].text
-    team = ranking_variable.css("player-cell-team")[0].text
-    week_impact = ranking_variable.css("fp-pc-article")[0].text
-
+   
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    puts "----------------------------------------------------------------------------"
+    puts " "
+    puts " "
+    puts "****   Player Name/Info Page:  #{ranking_variable.css('img')[0].values}"
+    puts " "
+    puts " "
+    puts " "
+    puts "**************************************"
+    puts " "
+    puts " "
+    puts " "
+    puts "****   News Update: #{ranking_variable.css('p')[2].text}"
+    puts " "
+    puts " "
+    puts " "
+    puts "*************************************"
+    puts " "
+    puts "****   #{ranking_variable.css('p')[3].text}"
+    puts " "
+    puts " "
+    puts " "
+    puts "*****  #{ranking_variable.css('p')[4].text}"
+    puts "*************************************"
+    puts " "
+    puts "----------------------------------------------------------------------------"
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+ 
 end
 
 
-Ranking.new(rank, player, team)
-
 end
+
