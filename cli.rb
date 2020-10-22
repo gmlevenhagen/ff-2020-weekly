@@ -1,17 +1,10 @@
 class CLI
 
-    puts "Welcome to your #{week} QB Rankings!!!"
-    puts "******************************"
-    puts "Weekly Ranking: #{rank}"
-    puts "Player Name: #{player}"
-    puts "Team Name: #{team}"
-    puts "******************************"
-    puts "******************************"
-    puts " "
-    puts "******************************"
-    #puts "Weekly Impact:"
-    #puts "#{week_impact}"
-    #puts " "
-    #puts " "
+    def initialize(name, news, category, fantasy_impact)
+        @name = name
+        @news = news
+        @category = category
+        @fantasy_impact = fantasy_impact
+    end
 
 end
