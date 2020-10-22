@@ -24,5 +24,11 @@ class CLI
         puts " "
         puts " "
     end
+
+    def second_news
+        puts "#{fantasy_impact}"
+        puts " "
+        puts " "
+    end
 end
 
