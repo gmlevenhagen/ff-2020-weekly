@@ -4,10 +4,11 @@ class News
 
     @@all = []
 
-    def initialize(name, news, category, fantasy_impact)
+    def initialize(name, news,category, number = 1, fantasy_impact)
         @name = name
         @news = news
         @category = category
+        @number = number
         @fantasy_impact = fantasy_impact
     end
 
@@ -15,33 +16,44 @@ class News
         @@all
     end
 
-    def print_update
-        puts "--------------------"
-        puts "#{@name}"
-        puts "--------------------"
+    def self.find_by_index(index)
+        @@all[index]
+      end
+
+      def self.all_news_stories
+        @@all.each_with_index do |story, index|
+          puts " #{index + 1}"
+          story.first_news
+          puts ""
+          sleep(1)
+        end
+      end
+
+      
+      def first_news
+        puts " --------------------------------------------"
         puts " "
-        puts "--------------------"
-        puts "#{category}"
-        puts "--------------------"
+        puts "***  Player Name: #{@name} ***"
         puts " "
-        puts "#{@news}"
+        puts "***  #{@category} ***"
+        puts " "
+        puts " -------------"
+        puts " Updated News: "
+        puts " -------------"
+        puts "*  #{@news}"
+        puts " "
+        puts " "
+        puts "--------------------------------------------- "
+        puts " "
+        puts " "
     end
 
-    def self.each_player_update
-        @@all.each_with_index do |player, index|
-            puts "Player update: #{index + 1}"
-            player.each_player_update
-            puts " "
-            puts "--------------------"
-            puts " "
+    def check_update
+        if @news == nil
+            Scraper.new.scrape_fantasy_news
         end
     end
-
-    def fantasy_update
-        if @fantasy_impact == nil
-            Scraper.new.scrape_two(self)
-        end
-    end
+    
 
     
 

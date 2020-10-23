@@ -2,7 +2,7 @@ require_relative "enviroment.rb"
 class Scraper
 
 
-   def scrape_one
+   def scrape_news
         url = "https://www.fantasypros.com/nfl/player-news.php"
         html = open(url)
         html_parsed_to_elements = Nokogiri::HTML(html)
@@ -20,7 +20,7 @@ class Scraper
     end
         
 
-    def scrape_two
+    def scrape_fantasy_news
             fant_url = ranking_variables[0].css("a").attr("href")
             fant_html = open("https://www.fantasypros.com/nfl/" + fant_url)
             binding.pry

@@ -1,30 +1,48 @@
-require_relative "enviroment.rb"
 class CLI
 
-    def initialize(name, news, category, fantasy_impact)
-        @name = name
-        @news = news
-        @category = category
-        @fantasy_impact = fantasy_impact
+
+    def call
+        puts ""
+        puts "----------------------------------------------------------------"
+        puts "    Welcome to the 2020 NFL Fantasy Football News and Injuries!!"
+        puts "    ------------------------------------------------------------"
+        puts ""
+        sleep(2)
+        Scraper.new.scrape_news
+        menu
     end
 
-    def first_news
-        puts " --------------------------------------------"
-        puts " "
-        puts "***  Player Name: #{name} ***"
-        puts " "
-        puts "***  #{category} ***"
-        puts " "
-        puts " -------------"
-        puts " Updated News: "
-        puts " -------------"
-        puts "*  #{news}"
-        puts " "
-        puts " "
-        puts "--------------------------------------------- "
-        puts " "
-        puts " "
+    def menu
+        puts "Please select news update or fantasy football news impact: "
+    puts " "
+    puts " 1. Player news/updates"
+    puts " 2. Fantasy football updates"
+    puts " "
+    user_input = gets.chomp
+    if user_input == "1"
+      News.print_all_reviews_to_be_selected
+      puts "Welcome to Player news/updates!!!!"
+      news_story = gets.chomp
+      select_to_index = news_story.to_i - 1
+      News.all[select_to_index].print_full_review
+      eslif user input == "2"
+    
+    elsif input == "exit"
+      goodbye
+    else
+      puts "Invalid entry. Please type 1, 2 or exit."
+      menu
     end
+  end
+
+  def goodbye
+    puts "Thanks for stopping by! Rankings are updated weekly! See you next time!"
+  end
+
+
+
+
+    
 
     def second_news
         puts "#{fantasy_impact}"
