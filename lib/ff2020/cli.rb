@@ -25,29 +25,10 @@ class CLI
       news_story = gets.chomp
       select_to_index = news_story.to_i - 1
       News.all[select_to_index].print_full_review
-      eslif user input == "2"
-    
-    elsif input == "exit"
-      goodbye
-    else
-      puts "Invalid entry. Please type 1, 2 or exit."
-      menu
-    end
   end
 
   def goodbye
     puts "Thanks for stopping by! Rankings are updated weekly! See you next time!"
   end
-
-
-
-
-    
-
-    def second_news
-        puts "#{fantasy_impact}"
-        puts " "
-        puts " "
-    end
 end
 

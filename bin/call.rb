@@ -1,3 +1,3 @@
-require_relative "../lib/enviroment.rb"
+require_relative "lib/environment"
 
-CLI.new.run
+Scraper.new.scrape_news

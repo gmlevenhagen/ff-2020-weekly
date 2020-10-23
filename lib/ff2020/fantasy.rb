@@ -1,6 +1,7 @@
 class Fantasy
     attr_accessor :name
 
+
     @@all = []
 
     def initialize(name)
@@ -8,19 +9,19 @@ class Fantasy
         @@all << self
     end
 
-    def self.all
-        @@all
+    def news
+        News.all.select {|news| news.fanasty == self}
     end
 
-    def fantasy
-        News.all.select {|news| news.fantasy == self}
-      end
-
-    def self.find_update_by_number(number)
-       found_update = all.find {|update| update.number == number}
-       if found_update
-        return  
+    def self.find_update_by_category(name)
+        found_category = self.all.find {|category| category.name == name}
+        if found_category
+            return found_category
+        else
+            return self.new(name)
+        end
     end
+    
 
 
 end
