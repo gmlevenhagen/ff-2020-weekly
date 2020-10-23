@@ -1,5 +1,6 @@
+require "require_all"
 require "pry"
 require "nokogiri"
 require "open-uri"
 
-require_relative "scraper.rb"
+require_all "lib/ff2020"

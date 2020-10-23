@@ -1,3 +1,4 @@
+require_relative "enviroment.rb"
 class CLI
 
     def initialize(name, news, category, fantasy_impact)
