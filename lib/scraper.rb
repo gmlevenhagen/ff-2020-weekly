@@ -1,4 +1,3 @@
-require_relative "enviroment.rb"
 class Scraper
 
     def initialize

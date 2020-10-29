@@ -1,7 +1,7 @@
 class CLI
 
 
-    def call
+    def run
         puts ""
         puts "----------------------------------------------------------------"
         puts "    Welcome to the 2020 NFL Fantasy Football News and Injuries!!"
@@ -30,5 +30,6 @@ class CLI
   def goodbye
     puts "Thanks for stopping by! Rankings are updated weekly! See you next time!"
   end
+end
 end
 

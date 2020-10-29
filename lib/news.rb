@@ -1,6 +1,6 @@
 class News
 
-  attr_accessor :name. :news, :category, :fantasy_impact
+  attr_accessor :name, :news, :category, :fantasy_impact
 
 
   @@all = []
