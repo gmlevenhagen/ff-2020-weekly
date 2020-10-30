@@ -2,34 +2,61 @@ class CLI
 
 
     def run
-        puts ""
-        puts "----------------------------------------------------------------"
-        puts "    Welcome to the 2020 NFL Fantasy Football News and Injuries!!"
-        puts "    ------------------------------------------------------------"
-        puts ""
-        sleep(2)
-        Scraper.new.scrape_news
-        menu
+      menu
     end
 
-    def menu
-        puts "Please select news update or fantasy football news impact: "
-    puts " "
-    puts " 1. Player news/updates"
-    puts " 2. Fantasy football updates"
-    puts " "
-    user_input = gets.chomp
-    if user_input == "1"
-      News.print_all_reviews_to_be_selected
-      puts "Welcome to Player news/updates!!!!"
-      news_story = gets.chomp
-      select_to_index = news_story.to_i - 1
-      News.all[select_to_index].print_full_review
+    def get_player_news
+      Scraper.new.scrape_news
+    end
+
+
+    def get_fantasy_update
+        Fantasy.all.each do |update|
+          puts "#{player.name} - #{fantasy_impacy.number} - #{category}"
+        end
+        menu
+      end
+
+
+  def exit_menu
+      input = gets.strip.downcase
+      case input
+      when "back"
+        get_player_news
+      when "exit"
+        puts "News/Fantasy updates are updating by the minute as they come in. 
+          Thanks for stopping by!!!  See you next time!!!"
+      else
+        puts "Invalid choice, try again."
+        exit_menu
+      end
+    end
   end
 
-  def goodbye
-    puts "Thanks for stopping by! Rankings are updated weekly! See you next time!"
-  end
-end
-end
+  def menu
+    puts ""
+      puts "----------------------------------------------------------------"
+      puts "    Welcome to the 2020 NFL Fantasy Football News and Injuries!!"
+      puts "    ------------------------------------------------------------"
+      puts " "
+      sleep(1)
+      puts "Please select news update or fantasy football news impact: "
+      puts " "
+      puts " 1. Player news/updates"
+      puts " 2. Fantasy football updates"
+      puts " "
+    input = gets.chomp
+    binding.pry
+    if input == "1" 
+      News.all_news_updates
+      puts "Please enter number 1 - 20 to view news update."
+      view_news = gets.chomp
+      select_to_index = view_news.to_i - 1
+      News.all[select_to_index].updated_news
+    elsif input == "2"
 
+    else
+      puts "Invalid choice, try again."
+      menu
+    end
+  end
