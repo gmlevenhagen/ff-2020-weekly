@@ -10,16 +10,20 @@ class Fantasy
     end
 
     def news
-        News.all.select {|news| news.fanasty == self}
+        News.all.select {|new| new.fantasy == self}
     end
 
-    def self.find_update_by_category(name)
-        found_category = self.all.find {|category| category.name == name}
-        if found_category
-            return found_category
+    def self.find_by_name(name)
+        found_fantasy = self.all.find {|fantasy| fantasy.name == name}
+        if found_fantasy
+            return found_fantasy
         else
             return self.new(name)
         end
+    end
+
+    def self.all
+        @@all
     end
     
 

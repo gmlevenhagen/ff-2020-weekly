@@ -1,15 +1,15 @@
 class News
 
-  attr_accessor :name, :news, :category, :fantasy_impact
+  attr_accessor :name, :news, :category, :fantasy
 
 
   @@all = []
 
-    def initialize(name, news, category, fantasy_impact)
+    def initialize(name, news, category)
         @name = name
         @news = news
         @category = category
-        @fantasy_impact = fantasy_impact
+        @fantasy = fantasy
         @@all << self
     end
 
@@ -27,7 +27,7 @@ class News
       puts " "
       puts "#{@news}"
       puts " "
-      puts " #{@category}"
+      puts "#{@category}"
       puts " "
       puts " "
     end
@@ -35,29 +35,18 @@ class News
     def self.all_news_updates
       @@all.each_with_index do |update, index|
         puts "Update:  #{index + 1} "
-        review.print_news_update
+        print_news_update
         puts ""
-        sleep(1)
+        @news
       end
     end
 
-    def news_updates
-      fantasy_update
-      puts "===================="
-      print_news_update
-      puts "Fantasy Impact: "
-      puts " "
-      puts " -----------------------------"
-      puts "         ************"
-      puts "#{@fantasy_impact} "
-      puts "         ************"
-      puts " -----------------------------"
-      puts " "
-    end
   
     def fantasy_update
       if @news === nil
         Scraper.new.scrape_fantasy_news(self)
       end
     end
+
+   
 end
