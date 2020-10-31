@@ -1,6 +1,7 @@
 class News
 
-  attr_accessor :name, :news, :category, :fantasy
+  attr_reader :name, :news, :category 
+  attr_accessor :fantasy
 
 
   @@all = []
@@ -9,7 +10,7 @@ class News
         @name = name
         @news = news
         @category = category
-        @fantasy = fantasy
+        #@fantasy = fantasy
         @@all << self
     end
 
@@ -43,7 +44,7 @@ class News
 
   
     def fantasy_update
-      if @news === nil
+      if !@news
         Scraper.new.scrape_fantasy_news(self)
       end
     end

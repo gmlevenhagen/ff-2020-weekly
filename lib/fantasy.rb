@@ -1,5 +1,5 @@
 class Fantasy
-    attr_accessor :name
+    attr_reader :name
 
 
     @@all = []
@@ -16,9 +16,9 @@ class Fantasy
     def self.find_by_name(name)
         found_fantasy = self.all.find {|fantasy| fantasy.name == name}
         if found_fantasy
-            return found_fantasy
+            found_fantasy
         else
-            return self.new(name)
+             self.new(name)
         end
     end
 
