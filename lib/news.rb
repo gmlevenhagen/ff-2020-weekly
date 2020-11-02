@@ -1,6 +1,6 @@
 class News
 
-  attr_reader :name, :news, :category 
+  attr_reader :name, :news, :category, :fantasy_impact 
 
 
   @@all = []
@@ -9,6 +9,7 @@ class News
         @name = name
         @news = news
         @category = category
+        @fantasy_impact = fantasy_impact
         @@all << self
     end
 

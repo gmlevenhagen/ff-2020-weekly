@@ -1,11 +1,13 @@
 class Fantasy
-    attr_reader :name
+    attr_accessor :name, :fantasy_impact
+   
 
 
     @@all = []
 
     def initialize(name)
         @name = name
+        @fantasy_impact = fantasy_impact
         @@all << self
     end
 
@@ -14,30 +16,37 @@ class Fantasy
     end
 
     def self.find_by_name(name)
-        found_fantasy = self.all.find {|fantasy| fantasy.name == name}
-        if found_fantasy
-            found_fantasy
+        found_name = self.all.find {|fantasy| fantasy.name == name}
+        if found_name
+            found_name
         else
              self.new(name)
         end
     end
 
     def get_fantasy_update
-        Fantasy.all.each do |update|
           puts "#{@name} - "
-          puts " " 
+          puts "_______________"
           puts "#{@fantasy_impact}"
           
-          
         end
-    end
-      
-    def fantasy_impact
-        if !@fantasy_impact
-        Scraper.new.scrape_fantasy_news(self)
-    end
-end
+    
 
+        def self.fantasy_news
+            @@all.each_with_index do |fantasy_impact, index|
+              puts "Update:  #{index + 1} "
+              get_fantasy_update
+              puts ""
+              @fantasy_impact
+            end
+          end
+
+          def get_fantasy_update
+            puts "#{@name} - "
+            puts "_______________"
+            puts "#{@fantasy_impact}"
+          end
+  
 
     def self.all
         @@all

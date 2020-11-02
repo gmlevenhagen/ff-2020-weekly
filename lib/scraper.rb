@@ -11,10 +11,9 @@ class Scraper
             news = news_updates.css('p')[2].text
             category = news_updates.css('p')[4].text
             player_url = news_updates[0].css("a").attr("href")
-
-            fantasy_update = Fantasy.find_by_name(name)
-
+            
             update = News.new(name, news, category)
+            fantasy_name_update = Fantasy.find_by_name(name)
         end
     end
         
@@ -23,5 +22,8 @@ class Scraper
             fant_html = open(url + update.player_url)
             fant_html_parsed = Nokogiri::HTML(fant_html)
             fantasy_impact = fant_html_parsed.css("p")[3].text
+
+            fantasy_news_update = Fantasy.new(fantasy_impact)
+
         end
     end
