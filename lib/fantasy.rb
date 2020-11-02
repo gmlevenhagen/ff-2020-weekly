@@ -22,6 +22,23 @@ class Fantasy
         end
     end
 
+    def get_fantasy_update
+        Fantasy.all.each do |update|
+          puts "#{@name} - "
+          puts " " 
+          puts "#{@fantasy_impact}"
+          
+          
+        end
+    end
+      
+    def fantasy_impact
+        if !@fantasy_impact
+        Scraper.new.scrape_fantasy_news(self)
+    end
+end
+
+
     def self.all
         @@all
     end

@@ -1,22 +1,50 @@
-class CLI
+class CLI 
 
 
   def run
-    
-    menu
-    exit_menu
+    puts ""
+      puts "______________________________________________________________________________________"
+      puts "   |                         *************************                            |"
+      puts " "
+      puts " "
+      puts "   |          Welcome to the 2020 NFL Fantasy Football News and Injuries!!        |"
+      puts " "
+      puts " "
+      puts "   |                         *************************                            |"
+      puts "______________________________________________________________________________________"
+      puts " "
+      puts " "
+      sleep(2)
+      puts Scraper.new.scrape_news.text
+      sleep(2)
+      menu
+      exit_menu
   end
 
   def menu
-    greeting
-      select_menu
-    input = gets.chomp
+    puts "_______________________________________________________________________________________"
+    puts "             Please select news update or fantasy football news impact: "
+      puts " "
+      puts "______________________________________________________________________________________"
+      puts "   |                         ***************************                          |"
+      puts "                      ***       1. Player news/updates      ***"
+      puts " "
+      puts "_______________________________________________________________________________________"
+      puts " "
+      puts "                      ***      2. Fantasy football updates  ***"
+      puts "   |                         *******************************                      |"
+      puts "______________________________________________________________________________________"
+      puts " "
+      input = gets.chomp
     if input == "1" 
+      puts " "
       puts "Please enter number 1 - 20 to view news update."
       view_news = gets.chomp
       select_to_index = view_news.to_i
       News.all[select_to_index].print_news_update
     elsif input == "2"
+      select_to_index = view_news.to_i
+      Fantasy.all[select_to_index].get_fantasy_update
       
     else
       puts "Invalid choice, try again."
@@ -24,7 +52,12 @@ class CLI
     end
 
 
-    def greeting
+    def select_to_index(input)
+      input.to_i - 1
+    end
+
+
+  def greeting
       puts ""
       puts "----------------------------------------------------------------"
       puts "    Welcome to the 2020 NFL Fantasy Football News and Injuries!!"
@@ -34,39 +67,21 @@ class CLI
       sleep(2)
       puts Scraper.new.scrape_news.text
       sleep(1)
-    end
+  end
 
-    def select_menu
+  def select_menu
       puts "Please select news update or fantasy football news impact: "
       puts " "
       puts " 1. Player news/updates"
       puts " 2. Fantasy football updates"
       puts " "
+  end
+
+    def select_to_index(input)
+      input.to_i - 1
     end
 
-
-    def get_fantasy_update
-        Fantasy.all.each do |update|
-          puts "#{player.name} - #{fantasy_impact.number} - #{category}"
-        end
-        menu
-      end
-
-      def print_news_update
-        puts " "
-        puts " -----------------------------"
-        puts "         ************"
-        puts "#{@name} "
-        puts "         ************"
-        puts " -----------------------------"
-        puts " "
-        puts "#{@news}"
-        puts " "
-        puts "#{@category}"
-        puts " "
-        puts " "
-      end
-
+     
     def exit_menu
       puts "Please type 'back' to go back to the menu or type 'exit' to leave."
       input = gets.strip.downcase
@@ -74,10 +89,15 @@ class CLI
       when "back"
         menu
       when "exit"
+        puts " "
+        puts " "
+        puts " "
         puts "News/Fantasy updates are updating by the minute as they come in. 
           Thanks for stopping by!!!  See you next time!!!"
+          puts " "
+          puts " "
       else
-        puts "Invalid choice, try again."
+        puts "I'm sorry, that was an incorrect entry. Please try again."
         exit_menu
       end
     end

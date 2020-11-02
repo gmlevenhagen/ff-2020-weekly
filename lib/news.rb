@@ -1,7 +1,6 @@
 class News
 
   attr_reader :name, :news, :category 
-  attr_accessor :fantasy
 
 
   @@all = []
@@ -10,27 +9,11 @@ class News
         @name = name
         @news = news
         @category = category
-        #@fantasy = fantasy
         @@all << self
     end
 
     def self.all
       @@all
-    end
-
-    def print_news_update
-      puts " "
-      puts " -----------------------------"
-      puts "         ************"
-      puts "#{@name} "
-      puts "         ************"
-      puts " -----------------------------"
-      puts " "
-      puts "#{@news}"
-      puts " "
-      puts "#{@category}"
-      puts " "
-      puts " "
     end
 
     def self.all_news_updates
@@ -40,6 +23,21 @@ class News
         puts ""
         @news
       end
+    end
+
+    def print_news_update 
+      puts " "
+      puts " -----------------------------"
+      puts "         ************"
+      puts "          #{@name} "
+      puts "         ************"
+      puts " -----------------------------"
+      puts " "
+      puts "#{@news}"
+      puts " "
+      puts "#{@category}"
+      puts " "
+      puts " "
     end
 
   
