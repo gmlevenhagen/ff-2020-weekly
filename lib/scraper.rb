@@ -13,7 +13,7 @@ class Scraper
             player_url = news_updates[0].css("a").attr("href")
             
             
-            update = News.new(name, news, category)
+            update = News.new(name, news, category, player_url)
 
             fantasy_update = Fantasy.find_by_name(name)
             

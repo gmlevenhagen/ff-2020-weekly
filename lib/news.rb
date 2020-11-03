@@ -1,13 +1,14 @@
 class News
 
-  attr_reader :name, :news, :category
+  attr_reader :name, :news, :category, :player_url
 
   @@all = []
 
-    def initialize(name, news, category)
+    def initialize(name, news, category, player_url)
         @name = name
         @news = news
         @category = category
+        @player_url = player_url
         @@all << self
     end
 
@@ -46,6 +47,7 @@ class News
       puts "***       #{@name} "      
       puts "___________________________"
       puts " #{@news}"
+      puts " www.fantasypros.com#{@player_url}"
       puts " "
     end
 
