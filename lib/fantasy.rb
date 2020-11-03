@@ -1,14 +1,16 @@
 class Fantasy
-    attr_accessor :name, :fantasy_impact
-   
 
+    attr_accessor :name
 
     @@all = []
-
+    
     def initialize(name)
-        @name = name
-        @fantasy_impact = fantasy_impact
-        @@all << self
+      @name = name
+      @@all << self
+    end
+
+    def self.all
+        @@all
     end
 
     def news
@@ -20,38 +22,16 @@ class Fantasy
         if found_name
             found_name
         else
-             self.new(name)
+            self.new(name)
         end
     end
 
-    def get_fantasy_update
-          puts "#{@name} - "
-          puts "_______________"
-          puts "#{@fantasy_impact}"
-          
+    def self.fantasy_news
+        @@all.each_with_index do |fantasy, index|
+          puts "Update:  #{index + 1} "
+          get_fantasy_update
+          puts ""
         end
-    
-
-        def self.fantasy_news
-            @@all.each_with_index do |fantasy_impact, index|
-              puts "Update:  #{index + 1} "
-              get_fantasy_update
-              puts ""
-              @fantasy_impact
-            end
-          end
-
-          def get_fantasy_update
-            puts "#{@name} - "
-            puts "_______________"
-            puts "#{@fantasy_impact}"
-          end
-  
-
-    def self.all
-        @@all
     end
-    
-
-
 end
+    

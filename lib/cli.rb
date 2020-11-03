@@ -41,14 +41,15 @@ class CLI
     puts " "
     input = gets.chomp
   if input == "1" 
+    News.all_news_updates
     puts " "
-    puts "Please enter number 1 - 20 to view news update."
+    puts "Please enter numberof update to view news update."
     view_news = gets.chomp
     select_to_index = view_news.to_i
     News.all[select_to_index].print_news_update
   elsif input == "2"
-    select_to_index = view_news.to_i
-    Fantasy.all[select_to_index].get_fantasy_update
+        select_to_index = view_news.to_i
+        News.all[select_to_index].get_fantasy_update
   elsif input = "3"
     puts "Leaving so soon?!"
     select_to_index = view_news.to_i
@@ -89,6 +90,7 @@ end
     input.to_i - 1
   end
 
+  
     
   def exit_menu
     puts "Please type 'back' to go back to the menu or type 'exit' to leave."
