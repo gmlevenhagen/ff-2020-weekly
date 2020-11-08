@@ -1,6 +1,6 @@
 class News
 
-  attr_reader :name, :news, :category, :player_url
+  attr_reader :name, :news, :category, :player_url, :impact
 
   @@all = []
 
@@ -18,36 +18,21 @@ class News
 
     def self.all_news_updates
       @@all.each_with_index do |update, index|
-        puts "Update:  #{index - 1} "
+        puts "Update:  #{index + 1} "
         update.print_news_update
         puts ""
       end
     end
 
     def print_news_update 
-      fantasy_updates
       puts " "
       puts " -----------------------------"
-      puts "         ************"
-      puts "          #{@name} "
-      puts "         ************"
+      puts "    ************"
+      puts "     #{name} "
+      puts "    ************"
+      puts " #{player_url}"
       puts " -----------------------------"
-      puts " "
-      puts "#{@news}"
-      puts " "
-      puts "#{@category}"
-      puts " "
-      puts " "
-    end
-
-    def get_fantasy_update
-      fantasy_updates
-      puts " "
-      puts " __________________________"
-      puts "***       #{@name} "      
-      puts "___________________________"
-      puts " #{@news}"
-      puts " www.fantasypros.com#{@player_url}"
+      puts " #{news}"
       puts " "
     end
 

@@ -48,8 +48,8 @@ class CLI
     select_to_index = view_news.to_i
     News.all[select_to_index].print_news_update
   elsif input == "2"
-        select_to_index = view_news.to_i
-        News.all[select_to_index].get_fantasy_update
+     select_to_index = view_news.to_i
+    Fantasy.all[select_to_index].get_fantasy_update
   elsif input = "3"
     puts "Leaving so soon?!"
     select_to_index = view_news.to_i
